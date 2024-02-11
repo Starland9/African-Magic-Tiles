@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6fro6sdxxvkw"]
+
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_8186x"]
+[ext_resource type="Script" path="res://Objects/TilesSponer/tiles_sponer.gd" id="1_ghlrd"]
+[ext_resource type="Texture2D" uid="uid://cukjok7edq3hx" path="res://Assets/Images/grid_bg.png" id="2_k0ul6"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8186x")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -128.0
+offset_right = 184.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k0ul6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.5
+offset_right = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 107
+
+[node name="Line1" type="ColorRect" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.121569)
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(1, 0.807843, 0.894118, 1)
+
+[node name="Line2" type="ColorRect" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.121569)
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(1, 0.807843, 0.894118, 1)
+
+[node name="Line3" type="ColorRect" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.121569)
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(1, 0.807843, 0.894118, 1)
+
+[node name="Line4" type="ColorRect" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.121569)
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(1, 0.807843, 0.894118, 1)
+
+[node name="Line5" type="ColorRect" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.121569)
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(1, 0.807843, 0.894118, 1)
+
+[node name="TileSponer" type="Control" parent="."]
+anchors_preset = 0
+offset_top = -160.0
+offset_bottom = -160.0
+script = ExtResource("1_ghlrd")
+
+[node name="Song" type="AudioStreamPlayer2D" parent="."]
+volume_db = 10.0
+autoplay = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="tile_touch" from="TileSponer" to="." method="_on_tile_sponer_tile_touch"]
+[connection signal="wrong" from="TileSponer" to="." method="_on_tile_sponer_wrong"]

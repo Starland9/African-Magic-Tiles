@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5hbaf04rjn4g"]
+
+[ext_resource type="Script" path="res://Scenes/music_producer.gd" id="1_bmqwl"]
+[ext_resource type="AudioStream" uid="uid://e4e8n5y33rhw" path="res://Assets/Songs/chicoter_les_tympans_tenor_arafat.ogg" id="2_36etu"]
+[ext_resource type="Script" path="res://Objects/Song/song.gd" id="3_qwln5"]
+
+[node name="MusicProducer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bmqwl")
+
+[node name="Song" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_36etu")
+autoplay = true
+script = ExtResource("3_qwln5")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

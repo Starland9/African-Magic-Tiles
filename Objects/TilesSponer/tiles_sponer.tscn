@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqjsex401hryu"]
+
+[ext_resource type="Script" path="res://Objects/TilesSponer/tiles_sponer.gd" id="1_rws8g"]
+
+[node name="TilesSponer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rws8g")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddg2wbmbgw544"]
+
+[ext_resource type="Script" path="res://Objects/Tile/tile.gd" id="1_fugbs"]
+[ext_resource type="Texture2D" uid="uid://b2kyw7ibgplwy" path="res://Assets/Images/whiteBlock.png" id="1_l7o6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfukq"]
+size = Vector2(119, 6)
+
+[node name="Tile" type="TextureRect"]
+modulate = Color(0, 0.737255, 0.831373, 1)
+clip_contents = true
+custom_minimum_size = Vector2(108, 150)
+offset_right = 108.0
+offset_bottom = 150.0
+texture = ExtResource("1_l7o6j")
+expand_mode = 1
+script = ExtResource("1_fugbs")
+
+[node name="Area" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(49.5, -2)
+shape = SubResource("RectangleShape2D_mfukq")
+
+[node name="Touch" type="TouchScreenButton" parent="."]
+scale = Vector2(0.675, 0.679577)
+texture_normal = ExtResource("1_l7o6j")
+
+[connection signal="pressed" from="Touch" to="." method="_on_touch_pressed"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv3t2l1fmmxix"]
+
+[ext_resource type="Texture2D" uid="uid://cukjok7edq3hx" path="res://Assets/Images/grid_bg.png" id="1_8n7ek"]
+[ext_resource type="Script" path="res://Scenes/home.gd" id="1_ff6w2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5gmls"]
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ff6w2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_right = 184.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8n7ek")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.005
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -733.0
+grow_horizontal = 2
+text = "African Magic Tiles"
+label_settings = SubResource("LabelSettings_5gmls")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.12
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

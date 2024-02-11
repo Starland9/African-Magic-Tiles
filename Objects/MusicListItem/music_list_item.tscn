@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6svkj7ujr382"]
+
+[ext_resource type="Script" path="res://Objects/MusicListItem/music_list_item.gd" id="1_w3wuq"]
+[ext_resource type="Texture2D" uid="uid://doafmd6iungkx" path="res://Assets/Images/vedio.png" id="3_5a5aj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ikor"]
+font_size = 12
+
+[node name="MusicListItem" type="Panel"]
+custom_minimum_size = Vector2(435, 60)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 56.0
+grow_horizontal = 2
+script = ExtResource("1_w3wuq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Title"
+
+[node name="Artits" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Landry, Simo"
+label_settings = SubResource("LabelSettings_3ikor")
+
+[node name="PlayBtn" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture_normal = ExtResource("3_5a5aj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Player" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+
+[connection signal="pressed" from="HBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
