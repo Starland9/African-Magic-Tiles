@@ -2,7 +2,7 @@ extends Control
 class_name TileSponer
 
 signal wrong()
-signal tile_touch()
+signal tile_touch(value: int)
 
 const tile_scene = preload("res://Objects/Tile/tile.tscn")
 var _init_random_pos_x := [0, 1]
@@ -23,6 +23,7 @@ func initTiles(times: Array):
 		tile.position.x += rnd_pos_x
 		tile.wrong.connect(_on_Tile_wrong)
 		tile.touch.connect(_on_Tile_touch)
+		tile.bloc_all_tiles.connect(_on_Tile_bloc_all)
 		init_y += 0.05
 		
 func _getRandomPosX() -> int:
@@ -34,10 +35,15 @@ func _getRandomPosX() -> int:
 		_init_random_pos_x.push_back(new_random_pos_x)
 		return new_random_pos_x
 		
+func _on_Tile_bloc_all():
+	for tile in get_children():
+		if tile is Tile:
+			tile.bloc()
+			
 
 func  _on_Tile_wrong():
 	wrong.emit()
 	
-func _on_Tile_touch():
-	tile_touch.emit()
+func _on_Tile_touch(value: int):
+	tile_touch.emit(value)
 

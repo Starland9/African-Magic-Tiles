@@ -21,4 +21,4 @@ func _load_songs():
 		music_item.initItem(jsonFile)
 
 func _on_play_btn_pressed():
-	var __ = get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	GameManager.change_scene_to("res://Scenes/main.tscn")

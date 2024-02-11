@@ -37,5 +37,5 @@ func _on_play_btn_pressed():
 	get_tree().create_timer(0.5).timeout.connect(_goToPlayScene)
 	
 func _goToPlayScene():
-	var __ = get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	GameManager.change_scene_to("res://Scenes/main.tscn")
 	

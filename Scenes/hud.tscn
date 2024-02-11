@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://b32ilvwjr4hye"]
+
+[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_oq6c0"]
+[ext_resource type="Texture2D" uid="uid://cpv405krjx021" path="res://Assets/Images/close.png" id="2_b6umn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_chgbw"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0.00392157, 0.839216, 0.466667, 1)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8feq"]
+bg_color = Color(0.00392157, 0.839216, 0.466667, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="Animation" id="Animation_d6l3h"]
+resource_name = "score_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:label_settings:font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [25, 40, 25]
+}
+
+[sub_resource type="Animation" id="Animation_xo5ne"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:label_settings:font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p26up"]
+_data = {
+"RESET": SubResource("Animation_xo5ne"),
+"score_anim": SubResource("Animation_d6l3h")
+}
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_oq6c0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.1
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_chgbw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_d8feq")
+show_percentage = false
+
+[node name="ToHomeBtn" type="TextureButton" parent="Control"]
+modulate = Color(1, 1, 1, 0.576471)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("2_b6umn")
+
+[node name="ScoreAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p26up")
+}
+speed_scale = 4.0
+
+[connection signal="pressed" from="Control/ToHomeBtn" to="." method="_on_to_home_btn_pressed"]

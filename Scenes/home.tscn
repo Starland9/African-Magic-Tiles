@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/home.gd" id="1_ff6w2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5gmls"]
-font_size = 32
+font_size = 25
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -32,12 +32,12 @@ texture = ExtResource("1_8n7ek")
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.005
+anchor_top = 0.02
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -733.0
 grow_horizontal = 2
-text = "African Magic Tiles"
+text = "African Piano Tiles"
 label_settings = SubResource("LabelSettings_5gmls")
 horizontal_alignment = 1
 

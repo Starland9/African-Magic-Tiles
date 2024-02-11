@@ -7,17 +7,20 @@
 font_size = 12
 
 [node name="MusicListItem" type="Panel"]
-custom_minimum_size = Vector2(435, 60)
+custom_minimum_size = Vector2(435, 75)
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 56.0
+offset_left = -1.0
+offset_right = 2.0
+offset_bottom = 72.0
 grow_horizontal = 2
 script = ExtResource("1_w3wuq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.95
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -25,8 +28,10 @@ theme_override_constants/separation = 150
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_direction = 2
 layout_mode = 2
-theme_override_constants/separation = 8
+size_flags_horizontal = 3
+theme_override_constants/separation = 9
 alignment = 1
 
 [node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
@@ -38,14 +43,17 @@ layout_mode = 2
 text = "Landry, Simo"
 label_settings = SubResource("LabelSettings_3ikor")
 
-[node name="PlayBtn" type="TextureButton" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayBtn" type="TextureButton" parent="HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 texture_normal = ExtResource("3_5a5aj")
-ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 5
 
 [node name="Player" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
 
-[connection signal="pressed" from="HBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/PlayBtn" to="." method="_on_play_btn_pressed"]
