@@ -1,7 +1,6 @@
 extends Panel
 class_name MusicListItem
 
-@export var json_file: JSON
 
 @onready var title : Label = $HBoxContainer/VBoxContainer/Title
 @onready var artists : Label = $HBoxContainer/VBoxContainer/Artits

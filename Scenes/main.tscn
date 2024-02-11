@@ -69,8 +69,8 @@ color = Color(1, 0.807843, 0.894118, 1)
 
 [node name="TileSponer" type="Control" parent="."]
 anchors_preset = 0
-offset_top = -160.0
-offset_bottom = -160.0
+offset_top = -192.0
+offset_bottom = -192.0
 script = ExtResource("1_ghlrd")
 
 [node name="Song" type="AudioStreamPlayer2D" parent="."]
